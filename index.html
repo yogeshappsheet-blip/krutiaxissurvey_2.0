@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Axis Bank - Survey Planning Portal</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Axis Bank Branch Visit Allocation and Survey Planning Platform">
+  <meta name="theme-color" content="#97144D">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #97144D;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Branded Loading Screen */
+    #loaderScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #97144D 0%, #750e3b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: #ffffff;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .brand-badge {
+      background-color: #ffffff;
+      color: #97144D;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 2px;
+      padding: 8px 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .portal-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .portal-subtitle {
+      font-size: 12px;
+      color: #fbcfe8;
+      margin-bottom: 24px;
+    }
+
+    /* Spinning Ring */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Seamless Full-Screen Iframe */
+    #appFrame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      height: 100dvh; /* Dynamic viewport height for mobile browsers */
+      border: none;
+      outline: none;
+      display: block;
+      z-index: 1;
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Splash Screen -->
+  <div id="loaderScreen">
+    <div class="brand-badge">AXIS</div>
+    <div class="portal-title">Survey Planning Portal</div>
+    <div class="portal-subtitle">Connecting to secure server...</div>
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Embedded Web App -->
+  <iframe 
+    id="appFrame"
+    src="https://script.google.com/macros/s/AKfycbwwmNqDyIRK5Ttkns4puCVk4eiCaX3_0trH9JYtNXh95rgzJ5iyg2SPXg646av4EwYU/exec"
+    allow="clipboard-write; geolocation; camera;"
+    onload="hideLoader()">
+  </iframe>
+
+  <script>
+    function hideLoader() {
+      const loader = document.getElementById('loaderScreen');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+        setTimeout(() => {
+          loader.remove();
+        }, 500);
+      }
+    }
+
+    // Fallback: If network is slow, hide loader after 8 seconds
+    setTimeout(() => {
+      hideLoader();
+    }, 8000);
+  </script>
+
+</body>
+</html>
